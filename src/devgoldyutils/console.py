@@ -1,4 +1,5 @@
 import random
+import os, sys
 
 class ConsoleColours:
     """Class that contants methods for colouring the text printed to the console."""
@@ -44,4 +45,4 @@ class ConsoleColours:
 
 class Console(ConsoleColours):
     def __init__(self):
-        pass
+        if sys.platform == "win32": os.system("color")
