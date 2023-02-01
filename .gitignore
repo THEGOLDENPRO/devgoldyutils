@@ -1,2 +1,4 @@
 devgoldyutils.egg-info
 dist
+demo.py
+__pycache__

@@ -1,7 +1,6 @@
 import random
-import os, sys
 
-class ConsoleColours:
+class LegacyColours:
     """Class that contants methods for colouring the text printed to the console."""
 
     def RANDOM(self, text:str):
@@ -42,7 +41,3 @@ class ConsoleColours:
 
     def RED(self, text:str):
         return "\u001b[31m" + str(text) + "\u001b[0m"
-
-class Console(ConsoleColours):
-    def __init__(self):
-        if sys.platform == "win32": os.system("color")
