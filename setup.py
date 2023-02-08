@@ -13,7 +13,7 @@ classifiers = [
 
 setup(
   name='devgoldyutils',
-  version="2.0",
+  version="2.0.1",
   description='My own utils library I use throughout all my python projects.', 
   url='https://github.com/THEGOLDENPRO/Dev-Goldy-Utils', 
   project_urls={"Bug Tracker": "https://github.com/THEGOLDENPRO/Dev-Goldy-Utils/issues"}, 
