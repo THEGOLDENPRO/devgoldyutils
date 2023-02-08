@@ -12,6 +12,7 @@ class Colours(Enum):
     PINK_GREY = "\u001b[38;5;139m"
     GREY = "\u001b[38;20m"
     YELLOW = "\u001b[33;20m"
+    ORANGE = "\u001b[38;5;214m"
 
     RESET_COLOUR = "\u001b[0m"
 
