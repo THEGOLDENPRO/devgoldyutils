@@ -2,18 +2,20 @@ from __future__ import annotations
 from typing import Any, Dict
 
 import logging as log
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from . import errors
 
 @dataclass
 class DictDataclass:
     """A base dataclass for handling dict filled dataclasses. I really don't know what to call it but I inherit from this to obtain special methods."""
+    logger:log.Logger = field(init=False, repr=False, default=None)
+    """A logger for us to use to send warnings about key errors."""
 
     def __post_init__(self):
         super().__post_init__(self)
 
-    def get(self, *keys, data = None, default_value = None, logger:log.Logger = None) -> Any|Dict:
+    def get(self, *keys, data = None, default_value = None) -> Any|Dict:
         """
         A small method used to grab data from the ``data`` dictionary with an advantage of handling KeyError respectfully. 
         It's better to use this method instead of just directly accessing the dictionary.
@@ -29,9 +31,6 @@ class DictDataclass:
 
         ``default_value``
             The default value to return if the object is not found in the dictionary.
-
-        ``logger``
-            A logger for us to use to send warnings about keys not being found.
 
         Returns
         -------
@@ -53,7 +52,7 @@ class DictDataclass:
             return data
         except (KeyError, TypeError) as e:
 
-            if logger is not None:
-                logger.warning(f"Could not find key {e} in dict so I'm returning default value '{default_value}'... Keys: {keys}")
+            if self.logger is not None:
+                self.logger.warning(f"Could not find key {e} in dict so I'm returning default value '{default_value}'... Keys: {keys}")
 
             return default_value
