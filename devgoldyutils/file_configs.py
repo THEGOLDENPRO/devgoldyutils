@@ -13,7 +13,7 @@ class JSONConfig():
         if logger is None:
             logger = log.getLogger()
 
-        self.logger = LoggerAdapter(logger, prefix="Config")
+        self.logger = LoggerAdapter(logger, prefix="JSONConfig")
 
         self.logger.debug(f"Opening config file at '{self.json_path}'...")
 
