@@ -2,7 +2,7 @@ from enum import Enum
 import sys, os
 
 class Colours(Enum):
-    """Enum class containing codes for most console colours. (Added in v2.0 rw)"""
+    """Enum class containing codes for most console colours. (Added in v2.0)"""
     GREEN = "\u001b[32m"
     BLUE = "\u001b[36m"
     CLAY = "\u001b[38;5;51m"

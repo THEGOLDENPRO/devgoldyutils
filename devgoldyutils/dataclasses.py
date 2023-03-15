@@ -8,8 +8,12 @@ from . import errors
 
 @dataclass
 class DictDataclass:
-    """A base dataclass for handling dict filled dataclasses. I really don't know what to call it but I inherit from this to obtain special methods."""
-    logger:log.Logger = field(init=False, repr=False, default=None)
+    """
+    A base dataclass for handling dict filled dataclasses. I really don't know what to call it but I inherit from this to obtain special methods.
+    
+    ⚠ KEY ERRORS will be ignored if you do not specify a logger.
+    """
+    logger:log.Logger|None = field(init=False, repr=False, default=None)
     """A logger for us to use to send warnings about key errors."""
 
     def __post_init__(self):
