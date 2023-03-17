@@ -17,7 +17,8 @@ class DictDataclass:
     """A logger for us to use to send warnings about key errors."""
 
     def __post_init__(self):
-        super().__post_init__(self)
+        if self.logger is None:
+            self.logger = log.getLogger()
 
     def get(self, *keys, data = None, default_value = None) -> Any|Dict:
         """
@@ -55,8 +56,6 @@ class DictDataclass:
             
             return data
         except (KeyError, TypeError) as e:
-
-            if self.logger is not None:
-                self.logger.warning(f"Could not find key {e} in dict so I'm returning default value '{default_value}'... Keys: {keys}")
+            self.logger.warning(f"Could not find key {e} in dict so I'm returning default value '{default_value}'... Keys: {keys}")
 
             return default_value
