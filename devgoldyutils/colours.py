@@ -1,6 +1,9 @@
 from enum import Enum
 import sys, os
 
+if sys.platform == "win32":
+    os.system("color")
+
 class Colours(Enum):
     """Enum class containing codes for most console colours. (Added in v2.0)"""
     GREEN = "\u001b[32m"
@@ -17,7 +20,19 @@ class Colours(Enum):
     RESET_COLOUR = "\u001b[0m"
 
     def __init__(self, colour_value:str):
-        if sys.platform == "win32": os.system("color")
+        ...
+
+    # NEW in v2.3.5! Check out here for info: https://gist.github.com/THEGOLDENPRO/317a1238c581557712d234ff10e41a61
+    # -----------------------------------------------------------------------------------------------------------------
+    def __str__(self):
+        return str(self.value)
+    
+    def __add__(self, other):
+        return self.value + str(other)
+    
+    def __radd__(self, other):
+        return str(other) + self.value
+    # -----------------------------------------------------------------------------------------------------------------
 
     def apply_to_string(self, string:str) -> str:
         """Returns that string but with this colour applied to it."""
