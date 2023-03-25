@@ -37,3 +37,7 @@ class Colours(Enum):
     def apply_to_string(self, string:str) -> str:
         """Returns that string but with this colour applied to it."""
         return self.value + string + self.RESET_COLOUR.value
+    
+    def apply(self, string:str) -> str:
+        """Returns that string but with this colour applied to it."""
+        return self.apply_to_string(string)
