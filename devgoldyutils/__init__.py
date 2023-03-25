@@ -10,4 +10,5 @@ from .file_configs import JSONConfig
 Colors = Colours
 
 # Utils from other libraries
-from prettyprinter import cpprint as pprint
+from prettyprinter import cpprint as pprint, install_extras
+install_extras(include=["dataclasses"])

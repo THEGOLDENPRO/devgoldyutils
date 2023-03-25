@@ -25,7 +25,7 @@ dependencies = [
     "prettyprinter"
 ]
 
-version = "2.3.8"
+version = "2.3.9"
 
 [project.urls]
 GitHub = "https://github.com/THEGOLDENPRO/devgoldyutils"
