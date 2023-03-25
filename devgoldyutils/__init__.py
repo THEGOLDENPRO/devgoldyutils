@@ -8,3 +8,6 @@ from .file_configs import JSONConfig
 
 # For those Americans. Imagine not using English UK.
 Colors = Colours
+
+# Utils from other libraries
+from prettyprinter import cpprint as pprint
