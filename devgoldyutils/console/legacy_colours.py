@@ -1,4 +1,5 @@
 import random
+from ..colours import Colours
 
 class LegacyColours:
     """Class that contants methods for colouring the text printed to the console."""
@@ -28,16 +29,16 @@ class LegacyColours:
             return self.RANDOM(text)
     
     def GREEN(self, text:str):
-        return "\u001b[32m" + str(text) + "\u001b[0m"
+        return Colours.GREEN.apply(text)
 
     def BLUE(self, text:str):
-        return "\u001b[36m" + str(text) + "\u001b[0m"
+        return Colours.BLUE.apply(text)
 
     def CLAY(self, text:str):
-        return "\u001b[38;5;51m" + str(text) + "\u001b[0m"
+        return Colours.CLAY.apply(text)
 
     def PURPLE(self, text:str):
-        return "\u001b[38;5;200m" + str(text) + "\u001b[0m"
+        return Colours.PURPLE.apply(text)
 
     def RED(self, text:str):
-        return "\u001b[31m" + str(text) + "\u001b[0m"
+        return Colours.RED.apply(text)
