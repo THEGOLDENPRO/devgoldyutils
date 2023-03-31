@@ -11,16 +11,18 @@ class DictDataclass:
     """
     A base dataclass for handling dict filled dataclasses. I really don't know what to call it but I inherit from this to obtain special methods.
     
-    ⚠ KEY ERRORS will be ignored if you do not specify a logger.
+    ⚠ KEY ERRORS may be ignored if you silence the global logger.
     """
     logger:log.Logger|None = field(init=False, repr=False, default=None)
     """A logger for us to use to send warnings about key errors."""
 
-    def __post_init__(self):
+    def __post_init__(self, logger=None):
+        if logger is not None: self.logger = logger
+
         if self.logger is None:
             self.logger = log.getLogger()
 
-    def get(self, *keys, data = None, default_value = None) -> Any|Dict:
+    def get(self, *keys, data:dict=None, optional:bool=False, default=None, **_) -> Any|Dict:
         """
         A small method used to grab data from the ``data`` dictionary with an advantage of handling KeyError respectfully. 
         It's better to use this method instead of just directly accessing the dictionary.
@@ -34,7 +36,10 @@ class DictDataclass:
         ``data``
             The dictionary containing the data, if left none we'll use ``self.data``.
 
-        ``default_value``
+        ``optional``
+            If this is true, no warning will be given if this key is missing.
+
+        ``default``
             The default value to return if the object is not found in the dictionary.
 
         Returns
@@ -49,6 +54,10 @@ class DictDataclass:
                 raise errors.DevGoldyUtilsError(
                     f"Looks like the dataclass '{self.__class__.__name__}' doesn't countian a data dict field. Please add one or use the data parameter in self.get() instead. \nError --> {e}"
                 )
+            
+        # In v2.4 we renamed the argument 'default_value' to default so to maintain backwards compatibility we still have to grab it.
+        if default is None:
+            default = _.get("default_value")
 
         try:
             for key in keys:
@@ -56,6 +65,7 @@ class DictDataclass:
             
             return data
         except (KeyError, TypeError) as e:
-            self.logger.warning(f"Could not find key {e} in dict so I'm returning default value '{default_value}'... Keys: {keys}")
+            if optional == False:
+                self.logger.warning(f"Could not find key {e} in dict so I'm returning default value '{default}'... Keys: {keys}")
 
-            return default_value
+            return default
