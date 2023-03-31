@@ -13,11 +13,12 @@ class Colours(Enum):
     RED = "\u001b[31m"
     BOLD_RED = "\u001b[31;1m"
     PINK_GREY = "\u001b[38;5;139m"
-    GREY = "\u001b[38;20m"
+    GREY = "\u001b[1;37;30m"
     YELLOW = "\u001b[33;20m"
     ORANGE = "\u001b[38;5;214m"
     WHITE = "\u001b[1;37;40m"
 
+    RESET = "\u001b[0m"
     RESET_COLOUR = "\u001b[0m"
 
     def __init__(self, colour_value:str):
