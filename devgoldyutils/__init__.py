@@ -5,6 +5,7 @@ from .dict_classes import DictDataclass, DictClass
 from .errors import DevGoldyUtilsError
 from .logging import add_custom_handler, LoggerAdapter
 from .file_configs import JSONConfig
+from .strings import short_str
 
 from . import better_get
 
