@@ -22,10 +22,15 @@ classifiers = [
 	'Programming Language :: Python :: 3.11'
 ]
 dependencies = [
-    "prettyprinter"
+    
 ]
 
-version = "2.5.3"
+version = "2.5.4"
+
+[project.optional-dependencies]
+pprint = [
+    "prettyprinter"
+]
 
 [project.urls]
 GitHub = "https://github.com/THEGOLDENPRO/devgoldyutils"
