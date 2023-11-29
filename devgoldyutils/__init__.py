@@ -1,4 +1,4 @@
-import importlib
+from importlib.util import find_spec
 
 from .console import Console
 
@@ -18,7 +18,6 @@ Colors = Colours
 # Optional utils from other libraries.
 # -------------------------------------
 # Install devgoldyutils with 'pprint' optional dependency to get this like so --> pip install devgoldyutils[pprint]
-if importlib.find_loader("prettyprinter") is not None: # TODO: Change this as pytest is complaining about it's deprecation.
-    # Lmao sorry in advance if you see this pytest warning. I will fix it in a later patch.
+if find_spec("prettyprinter") is not None:
     from prettyprinter import cpprint as pprint, install_extras
     install_extras(include=["dataclasses"])
