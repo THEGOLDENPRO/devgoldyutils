@@ -1,2 +1,2 @@
 build:
-	python -m build
+	python -m build --wheel
