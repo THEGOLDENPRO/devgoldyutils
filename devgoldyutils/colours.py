@@ -1,5 +1,10 @@
+import os
+import sys
 from enum import Enum
-import sys, os
+
+__all__ = (
+    "Colours", 
+)
 
 if sys.platform == "win32":
     os.system("color")

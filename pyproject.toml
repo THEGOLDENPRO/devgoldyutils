@@ -22,13 +22,17 @@ classifiers = [
 	'Programming Language :: Python :: 3.11',
     'Programming Language :: Python :: 3.12'
 ]
-dependencies = [
-    
-]
+dependencies = []
 
-version = "2.5.8"
+dynamic = ["version"]
+
+[tool.setuptools.dynamic]
+version = { attr = "devgoldyutils.__version__" }
 
 [project.optional-dependencies]
+dev = [
+    "ruff"
+]
 pprint = [
     "prettyprinter"
 ]
