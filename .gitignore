@@ -4,3 +4,7 @@ build
 *.egg-info
 .ruff_cache
 __pycache__
+
+packages/arch/*
+!packages/arch/Makefile
+!packages/arch/PKGBUILD
