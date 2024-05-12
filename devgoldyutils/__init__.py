@@ -20,4 +20,4 @@ if find_spec("prettyprinter") is not None:
     from prettyprinter import cpprint as pprint, install_extras
     install_extras(include=["dataclasses"])
 
-__version__ = "3.0.0beta1"
+__version__ = "3.0.0"
